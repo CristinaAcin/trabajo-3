@@ -99,7 +99,7 @@ def grafico_simbolos_balance_purchases():
                                             color='DarkSlateGrey')),
                     selector=dict(mode='markers'))
 
-    fig.update_layout(title = "Purchases VS. Balance por Cluster (Gráfico de puntos)", title_x=0.5)
+    fig.update_layout(title = "Purchases VS. Balance por Cluster (Gráfico de puntos)", title_x=0.5, xaxis_title="Balance", yaxis_title="Purchases")
     return fig
 
 

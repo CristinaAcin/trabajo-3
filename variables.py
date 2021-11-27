@@ -4,8 +4,8 @@ import pandas as pd
 df = pd.read_csv("trabajo3.csv")
 
 df_sin_outliers = df[df["BALANCE"] < 5000]
-df_clusters = pd.read_csv('../../Trabajo 3 Info/df_clusters.csv')
-df_radar_chart = pd.read_csv('../../Trabajo 3 Info/df_radar_chart.csv')
+df_clusters = pd.read_csv('../Trabajo 3 Info/df_clusters.csv')
+df_radar_chart = pd.read_csv('../Trabajo 3 Info/df_radar_chart.csv')
 
 style_texto = {
     "display": "block",

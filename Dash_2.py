@@ -5,8 +5,8 @@
 import numpy as np
 import plotly.graph_objects as go
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 import pandas as pd
 import plotly.express as px
 from dash.dependencies import Input, Output, State
@@ -194,7 +194,7 @@ app.layout = html.Div(  # Primer Div que contendrá toda la página
         ),
             ],
         style={
-                    "margin-left": "15%",
+                    "margin-left": "20%",
                 }
 
         ),
@@ -278,30 +278,33 @@ app.layout = html.Div(  # Primer Div que contendrá toda la página
                 dcc.Graph(  # Gráfico barrras varaibles BALANCE y PURCHASES para explicar diferencia entre clusters
                     figure=grafico_barras_balance_purchases(),
                     style={
-                        "display": "block",
-                        "margin-left":"20%",
-                        "margin-right":"10%"
+                        "display": "inline-block",
+                        "margin-left": "5%"
                     }
                     ),
 
                 dcc.Graph(  # Scatterplot variables BALANCE y PURCHASES para explicar diferencia entre clusters
                     figure=grafico_simbolos_balance_purchases(),
                     style={
-                        "display": "block",
-                        "margin-left":"10%",
-                        "margin-right":"10%"
+                        "display": "inline-block"
                     }
                 ),
+            ]
+        ),
 
+        html.Div(
+            children=[
                 dcc.Graph(  # Gráfico de Radar para explicar diferencia entre clusters
                     figure=radar_chart_clusters(),
                     style={
                         "display": "block",
-                        "margin-left":"20%",
+                        "margin-left":"30%",
                         "margin-right":"10%"
                     }
                 ),
 
+        html.Div(
+            children=[
                 dcc.Dropdown(  #Dropdown para elegir el cluster a representar en el gráfico de barras
                     id="valores-clusters",
                     options=[
@@ -311,13 +314,14 @@ app.layout = html.Div(  # Primer Div que contendrá toda la página
                         {'label': 'Cluster 3', 'value': 3},
                     ],
                     placeholder = 'Elige uno de los clusters',
-                    
-                    style={
-                        "display": 'block',
-                        "margin-right": "30%",
-                        "margin-left": "10%",
-                    }
                     ),
+            ],
+                style={
+                        "display": 'block',
+                        "margin-left": "20%",
+                        "width": "750px"
+                    }
+        ),
                 
                 dcc.Graph(
                     id="info-clusters",
@@ -347,7 +351,6 @@ app.layout = html.Div(  # Primer Div que contendrá toda la página
 
 def actualizar_grafico_barras(nombre_variable):
 
-    print(nombre_variable)
     fig = graficos_barras_variables(nombre_variable)
 
     return fig 
